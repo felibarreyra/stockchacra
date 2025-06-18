@@ -105,6 +105,11 @@ class Producto {
         $stmt = $this->pdo->prepare("INSERT INTO areas (nombre) VALUES (?)");
         return $stmt->execute([$nombre]);
     }
+
+    public function eliminarProducto($id_producto) {
+        $stmt = $this->pdo->prepare("DELETE FROM productos WHERE id = ?");
+        return $stmt->execute([$id_producto]);
+    }
     
     
 

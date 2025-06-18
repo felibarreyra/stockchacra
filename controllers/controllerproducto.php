@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/modelproducto.php';
+date_default_timezone_set('America/Argentina/Buenos_Aires');
 
 class StockController {
     public function stockActual() {
@@ -122,6 +123,23 @@ class StockController {
             echo "<p style='color:green; text-align:center;'>✅ Área agregada correctamente.</p>";
         } else {
             echo "<p style='color:red; text-align:center;'>❗ Error al agregar el área.</p>";
+        }
+    }
+
+    public function eliminarProducto() {
+        global $pdo;
+        $productoModel = new Producto($pdo);
+    
+        $id_producto = $_POST['id_producto'] ?? null;
+    
+        if ($id_producto) {
+            if ($productoModel->eliminarProducto($id_producto)) {
+                echo "<p style='color:green; text-align:center;'>✅ Producto eliminado correctamente.</p>";
+            } else {
+                echo "<p style='color:red; text-align:center;'>❗ Error al eliminar el producto.</p>";
+            }
+        } else {
+            echo "<p style='color:red; text-align:center;'>❗ ID de producto no proporcionado.</p>";
         }
     }
     

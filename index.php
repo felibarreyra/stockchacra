@@ -113,6 +113,17 @@ switch ($seccion) {
             exit;
             }
         break;
+
+    case 'eliminar_producto':
+        require_once __DIR__ . '/models/modelproducto.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_producto'])) {
+            $idProducto = intval($_POST['id_producto']);
+            $productoModel = new Producto($pdo);
+            $productoModel->eliminarProducto($idProducto);
+            header("Location: index.php?seccion=stock");
+            exit;
+        }
+    break;
           
     default:
         echo "<p style='text-align:center;'>Sección no encontrada</p>";

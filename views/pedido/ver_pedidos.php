@@ -66,7 +66,7 @@ foreach ($pedidos as $fila) {
                       <th>Pedido</th>
                       <th>Recibido</th>
                       <th>Stock</th>
-                      <th>Pagado</th>
+                      <th>Pago</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -80,11 +80,10 @@ foreach ($pedidos as $fila) {
                           <?php if ($prod['fue_pagado']): ?>
                             ✅
                           <?php else: ?>
-                            ❌
                             <form method="POST" action="index.php?seccion=marcar_pagado" style="display:inline;">
                               <input type="hidden" name="id_pedido" value="<?= $id ?>">
                               <input type="hidden" name="id_producto" value="<?= $prod['id_producto'] ?>">
-                              <button type="submit" class="btn-pagar" title="Marcar como pagado">💰</button>
+                              <button type="submit" class="btn-pagar" title="Marcar como pago">💰</button>
                             </form>
                           <?php endif; ?>
                         </td>

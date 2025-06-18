@@ -38,6 +38,7 @@ function mostrarDecimalLimpio($num) {
                     <th>Cantidad</th>
                     <th>Gasto por Sábado</th>
                     <th>Últ. Fecha Ingreso</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +63,14 @@ function mostrarDecimalLimpio($num) {
                         </td>
                         <td data-label="Gasto por Sábado"><?= mostrarDecimalLimpio($p['gasto_x_sabado']) ?></td>
                         <td data-label="Fecha Ingreso"><?= isset($p['fecha_ingreso']) ? htmlspecialchars($p['fecha_ingreso']) : 'N/D' ?></td>
+                        <td>
+                        <form method="POST" action="index.php?seccion=eliminar_producto"
+                            onsubmit="return confirm('¿Estás seguro de eliminar este producto? Esta acción no se puede deshacer.');"
+                            style="display:inline;">
+                            <input type="hidden" name="id_producto" value="<?= $p['id'] ?>">
+                            <button type="submit" class="btn-eliminar-pro" title="Eliminar Producto">🗑️</button>
+                        </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -2,6 +2,8 @@
 // controllers/PedidoController.php
 require_once __DIR__ . '/../models/modelproducto.php';
 require_once __DIR__ . '/../models/modelpedido.php';
+date_default_timezone_set('America/Argentina/Buenos_Aires');
+
 
 class PedidoController {
     public function formularioManual() {

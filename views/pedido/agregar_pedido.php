@@ -30,7 +30,7 @@
               <th>Producto</th>
               <th>Pedido</th>
               <th>Recibido</th>
-              <th>Pagado</th>
+              <th>Pago</th>
             </tr>
           </thead>
           <tbody>
@@ -40,10 +40,15 @@
                 <td><?= mostrarDecimalLimpio($item['cantidad_pedida']) ?></td>
                 <td>
                   <input type="number" name="recibido[<?= $item['id_producto'] ?>]" min="0" step="0.01" value="<?= mostrarDecimalLimpio($item['cantidad_pedida']) ?>">
-                </td>
-                <td style="text-align: center;">
-                  <input type="checkbox" name="pagado[<?= $item['id_producto'] ?>]" value="1">
-                </td>
+                  <td style="text-align: center;">
+                    <?php if ($item['fue_pagado'] == 1): ?>
+                        <input type="checkbox" checked disabled>
+                        <input type="hidden" name="pagado[<?= $item['id_producto'] ?>]" value="1">
+                    <?php else: ?>
+                        <input type="checkbox" name="pagado[<?= $item['id_producto'] ?>]" value="1">
+                    <?php endif; ?>
+                    </td>
+
               </tr>
             <?php endforeach; ?>
           </tbody>
