@@ -988,6 +988,8 @@ button.pedido-submit:hover {
     .stock-actual-container {
         padding: 20px 15px;
         margin: 20px 15px 60px;
+        height: 400px; /* Ajusta la altura para móviles */
+        overflow-y: auto;
     }
     .stock-actual-container thead {
         display: none;
@@ -1022,5 +1024,260 @@ button.pedido-submit:hover {
         flex: 1 1 55%;
         text-align: right;
         color: #1b4332;
+    }
+    body {
+        padding: 10px;
+        font-size: 16px;
+        background-color: #f9f9f9;
+    }
+    
+    .login-container, .main-container, .agregar-pedido-container {
+        width: 100% !important;
+        padding: 15px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .contenedor-agregar-producto{
+        height: 500px;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+    
+    h1, h2, .ver-pedidos-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    form, .pedido-form {
+        width: 100%;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        font-size: 16px;
+        padding: 8px 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    .registrar-consumo-container{
+        width: 100%;
+        padding: 20px;
+        height: 450px;
+        overflow-y: auto;
+    }
+    .btn-eliminar-pro{
+        margin-left: 40px;
+    }
+    .pedido-form-container {
+        width: 100%;
+        height: 400px;
+        overflow-y: auto;
+    }
+    .ver-pedidos-container {
+        width: 100%;
+        padding: 20px;
+        height: 500px;
+        overflow-y: auto;
+    }
+    
+    button,
+    .pedido-submit,
+    input[type="submit"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    
+        /* Tablas */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+    
+    .tabla-recibir-scroll {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+    
+    .tabla-pedidos thead {
+        display: none;
+    }
+    
+    .tabla-pedidos tr {
+        display: block;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+    
+    .tabla-pedidos td {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+        font-size: 14px;
+    }
+    
+    .tabla-pedidos td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 40%;
+    }
+    
+        /* Navbar o menús si tenés */
+    .navbar, .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .navbar a, .menu a {
+        padding: 12px;
+        text-align: center;
+    }
+    .ver-pedidos-container {
+        width: 100%;
+        padding: 20px;
+        height: 400px;
+        overflow-y: auto;
+    }
+    
+    .ver-pedidos-title {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .tabla-scroll {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+
+    .tabla-pedidos {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+        text-align: center; /* Align content to center */
+    }
+
+    .tabla-pedidos thead {
+        display: none;
+    }
+
+    .tabla-pedidos tr {
+        display: block;
+        margin-bottom: 1rem;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 0.5rem;
+        text-align: center; /* Align content to center */
+    }
+
+    .tabla-pedidos td {
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        padding: 0.4rem 0;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+    }
+
+    .tabla-pedidos td:last-child {
+        border-bottom: none;
+    }
+
+    .tabla-pedidos td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #14532d;
+        flex-basis: 45%;
+        text-align: left;
+    }
+
+    .tabla-pedidos td {
+        flex-basis: 55%;
+        text-align: center; /* Align content to center */
+        color: #333;
+    }
+
+    .tabla-pedidos-interna {
+        margin-top: 0.5rem;
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #f9f9f9;
+        text-align: center; /* Align content to center */
+    }
+
+    .tabla-pedidos-interna thead {
+        display: none;
+    }
+
+    .tabla-pedidos-interna tr {
+        display: block;
+        margin-bottom: 0.5rem;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 0.4rem;
+        text-align: center; /* Align content to center */
+    }
+
+    .tabla-pedidos-interna td {
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        padding: 0.3rem 0;
+        font-size: 13px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .tabla-pedidos-interna td:last-child {
+        border-bottom: none;
+    }
+
+    .tabla-pedidos-interna td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 45%;
+        color: #333;
+        text-align: left;
+    }
+
+    .tabla-pedidos-interna td {
+        flex-basis: 55%;
+        text-align: center; /* Align content to center */
+        color: #555;
+    }
+
+    .btn-borrar, .btn-descargar, .btn-pagar, .btn-eliminar-p {
+        width: auto;
+        display: block;
+        margin-top: 6px;
+        font-size: 14px;
+        text-align: center;
+        padding: 8px;
+        border-radius: 6px;
+    }
+
+    .btn-pagar {
+        color: #2e7d32;
+        font-size: 16px;
+    }
+
+    .btn-descargar {
+        margin-top: 8px;
+    }
+
+    .estado-pendiente {
+        color: #b91c1c;
+        font-weight: bold;
     }
 }
