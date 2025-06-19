@@ -30,13 +30,13 @@ class PedidoController {
         $productosSeleccionados = $_POST['productos'] ?? [];
     
         if (empty($productosSeleccionados)) {
-            echo "<p style='color:red; text-align:center;'>❌ No seleccionaste ningún producto.</p>";
-            return;
+            $error = urlencode("No seleccionaste ningún producto.");
+            header("Location: index.php?seccion=formulario_pedido_manual&error=$error");
+            exit;
         }
     
         $nro_remito = 'REM-' . date('Ymd-His');
         $fecha = date('Y-m-d');
-        
     
         $idPedido = $pedidoModel->crearPedido($nro_remito, $fecha);
     
@@ -46,8 +46,10 @@ class PedidoController {
             }
         }
     
-        echo "<p style='text-align:center;'>✅ Pedido generado correctamente - Remito: <strong>$nro_remito</strong></p>";
+        header("Location: index.php?seccion=formulario_pedido_manual&success=1&remito=" . urlencode($nro_remito));
+        exit;
     }
+    
     
     public function verPedidos() {
         global $pdo;
@@ -93,7 +95,9 @@ class PedidoController {
     
         $pedidoModel->marcarPedidoComoRecibido($id_pedido);
     
-        echo "<p style='text-align:center;'>✅ Pedido recibido y stock actualizado.</p>";
+       // Redirigir con mensaje de éxito
+       header("Location: index.php?seccion=agregar_pedido&exito=1&remito=$id_pedido");
+        exit;
     }
     public function marcarComoPagado() {
         global $pdo;

@@ -124,7 +124,16 @@ switch ($seccion) {
             exit;
         }
     break;
-          
+    case 'eliminar_consumo':
+        require_once __DIR__ . '/models/modelproducto.php';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_consumo'])) {
+            $idConsumo = intval($_POST['id_consumo']);
+            $productoModel = new Producto($pdo);
+            $productoModel->eliminarConsumo($idConsumo);
+            header("Location: index.php?seccion=ver_consumos");
+            exit;
+        }
+    break;
     default:
         echo "<p style='text-align:center;'>Sección no encontrada</p>";
         break;

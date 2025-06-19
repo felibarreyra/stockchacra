@@ -1,5 +1,20 @@
 <div class="registrar-consumo-container">
   <h2>🍽 Registrar Consumo de Productos</h2>
+  <?php if (isset($_GET['exito'])): ?>
+  <div class="alert success">✅ Consumo registrado y stock actualizado.</div>
+<?php elseif (isset($_GET['error'])): ?>
+  <div class="alert error">
+    <?php
+      switch ($_GET['error']) {
+        case 'cantidad': echo '❌ Cantidad inválida.'; break;
+        case 'producto': echo '❌ Producto no encontrado.'; break;
+        case 'stock': echo '❌ No hay suficiente stock disponible.'; break;
+        default: echo '❌ Error desconocido.'; break;
+      }
+    ?>
+  </div>
+<?php endif; ?>
+
   <?php function mostrarDecimalLimpio($num) {
     return rtrim(rtrim(number_format($num, 2, '.', ''), '0'), '.');
   } ?>

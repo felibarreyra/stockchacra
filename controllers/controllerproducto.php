@@ -69,7 +69,9 @@ class StockController {
         // Restar del stock
         $productoModel->restarStock($producto_id, $cantidad);
     
-        echo "<p style='color:green; text-align:center;'>✅ Consumo registrado y stock actualizado.</p>";
+        
+        header("Location: index.php?seccion=formulario_consumo&exito=1");
+        exit;
     }
     
     public function verConsumos() {

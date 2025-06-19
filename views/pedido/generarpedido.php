@@ -14,6 +14,16 @@ function mostrarDecimalLimpio($num) {
 
 <div class="pedido-form-container">
     <h1>📝 Pedido <?= $areaSeleccionada ? "– Área: $areaSeleccionada" : "" ?></h1>
+    <?php if (isset($_GET['success']) && $_GET['remito']): ?>
+        <div class="alert success">
+            ✅ Pedido generado correctamente – Remito: <strong><?= htmlspecialchars($_GET['remito']) ?></strong>
+        </div>
+    <?php elseif (isset($_GET['error'])): ?>
+        <div class="alert error">
+            ❌ <?= htmlspecialchars($_GET['error']) ?>
+        </div>
+    <?php endif; ?>
+    
 
     <form action="index.php?seccion=guardar_pedido_manual" method="POST" class="pedido-form">
 

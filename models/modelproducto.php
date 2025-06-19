@@ -110,14 +110,10 @@ class Producto {
         $stmt = $this->pdo->prepare("DELETE FROM productos WHERE id = ?");
         return $stmt->execute([$id_producto]);
     }
-    
-    
-
-    
-
-    
-    
-    
+    public function eliminarConsumo($id_consumo) {
+        $stmt = $this->pdo->prepare("DELETE FROM consumos WHERE id = ?");
+        return $stmt->execute([$id_consumo]);
+    }  
     
 }
 

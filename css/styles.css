@@ -1314,4 +1314,78 @@ button.pedido-submit:hover {
         border-radius: 4px;
         width: 110px;
     }
+    .tabla-scroll {
+        overflow-x: auto;
+    }
+    
+    .tabla-pedidos {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .tabla-pedidos thead {
+        display: none;
+    }
+    
+    .tabla-pedidos tbody {
+        display: block;
+    }
+    
+    .tabla-pedidos tbody tr {
+        display: block;
+        margin-bottom: 20px;
+        background: #f1f5f9;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    }
+    
+    .tabla-pedidos tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 10px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .tabla-pedidos tbody td:last-child {
+        border-bottom: none;
+    }
+    
+    .tabla-pedidos tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #3d7424;
+    }
+    
+    .tabla-pedidos-interna {
+        width: 100%;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        font-size: 0.8rem;
+    }
+    
+    .tabla-pedidos-interna thead {
+        background-color: #3d7424;
+        color: white;
+    }
+    
+    .tabla-pedidos-interna th, 
+    .tabla-pedidos-interna td {
+        padding: 6px;
+        text-align: center;
+    }
+    
+    .btn-pagar,
+    .btn-eliminar-p,
+    .btn-descargar {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+        margin-top: 6px;
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }

@@ -52,10 +52,10 @@ foreach ($pedidos as $fila) {
         <tbody>
           <?php $i = 1; foreach ($agrupados as $id => $pedido): ?>
             <tr>
-              <td><?= $i++ ?></td>
-              <td><?= htmlspecialchars($pedido['nro_remito']) ?></td>
-              <td><?= htmlspecialchars($pedido['fecha']) ?></td>
-              <td class="<?= $pedido['estado'] === 'Pendiente' ? 'estado-pendiente' : 'estado-recibido' ?>">
+              <td data-label="#"><?= $i++ ?></td>
+              <td data-label="Remito"><?= htmlspecialchars($pedido['nro_remito']) ?></td>
+              <td data-label="Fecha"><?= htmlspecialchars($pedido['fecha']) ?></td>
+              <td data-label="Estado" class="<?= $pedido['estado'] === 'Pendiente' ? 'estado-pendiente' : 'estado-recibido' ?>">
                 <?= htmlspecialchars($pedido['estado']) ?>
               </td>
               <td colspan="5">
@@ -72,22 +72,23 @@ foreach ($pedidos as $fila) {
                   <tbody>
                     <?php foreach ($pedido['productos'] as $prod): ?>
                       <tr>
-                        <td><?= htmlspecialchars($prod['nombre_producto']) ?></td>
-                        <td><?= mostrarDecimalLimpio($prod['cantidad_pedida']) ?></td>
-                        <td><?= mostrarDecimalLimpio($prod['cantidad_recibida']) ?></td>
-                        <td><?= mostrarDecimalLimpio($prod['cantidad_actual']) ?></td>
-                        <td>
-                          <?php if ($prod['fue_pagado']): ?>
-                            ✅
-                          <?php else: ?>
-                            <form method="POST" action="index.php?seccion=marcar_pagado" style="display:inline;">
-                              <input type="hidden" name="id_pedido" value="<?= $id ?>">
-                              <input type="hidden" name="id_producto" value="<?= $prod['id_producto'] ?>">
-                              <button type="submit" class="btn-pagar" title="Marcar como pago">💰</button>
-                            </form>
-                          <?php endif; ?>
-                        </td>
-                      </tr>
+                      <td data-label="Producto"><?= htmlspecialchars($prod['nombre_producto']) ?></td>
+                      <td data-label="Pedido"><?= mostrarDecimalLimpio($prod['cantidad_pedida']) ?></td>
+                      <td data-label="Recibido"><?= mostrarDecimalLimpio($prod['cantidad_recibida']) ?></td>
+                      <td data-label="Stock"><?= mostrarDecimalLimpio($prod['cantidad_actual']) ?></td>
+                      <td data-label="Pago">
+                        <?php if ($prod['fue_pagado']): ?>
+                          ✅
+                      <?php else: ?>
+                        <form method="POST" action="index.php?seccion=marcar_pagado" style="display:inline;">
+                          <input type="hidden" name="id_pedido" value="<?= $id ?>">
+                          <input type="hidden" name="id_producto" value="<?= $prod['id_producto'] ?>">
+                          <button type="submit" class="btn-pagar" title="Marcar como pago">💰</button>
+                        </form>
+                      <?php endif; ?>
+                    </td>
+                  </tr>
+
                     <?php endforeach; ?>
                   </tbody>
                 </table>
@@ -101,12 +102,12 @@ foreach ($pedidos as $fila) {
                 </form>
               </td>
               <td>
-              <a href="generar_pedido_pdf.php?id_pedido=<?= $id ?>" 
-                class="btn-descargar" 
-                target="_blank">
-                📄 Descargar PDF
-              </a>
-            </td>
+                <a href="generar_pedido_pdf.php?id_pedido=<?= $id ?>" 
+                   class="btn-descargar" 
+                   target="_blank">
+                   📄 PDF
+                </a>
+              </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -114,4 +115,3 @@ foreach ($pedidos as $fila) {
     </div>
   <?php endif; ?>
 </div>
-

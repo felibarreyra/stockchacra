@@ -7,6 +7,7 @@ function mostrarDecimalLimpio($num) {
 <div class="consumos-container">
   <h1>📊 Consumos Registrados</h1>
 
+  <!-- Filtro por sábado y área -->
   <form method="GET" class="form-filtro-area">
     <input type="hidden" name="seccion" value="ver_consumos">
 
@@ -29,22 +30,30 @@ function mostrarDecimalLimpio($num) {
   <?php if (empty($consumos)): ?>
     <p>No hay consumos registrados<?= isset($_GET['fecha_sabado']) ? ' para esa fecha.' : ' aún.' ?></p>
   <?php else: ?>
-    <!-- Contenedor scroll -->
     <div class="tabla-consumo-scroll">
-      <table>
+      <table class="tabla-consumos">
         <thead>
           <tr>
             <th>Producto</th>
             <th>Fecha</th>
             <th>Cantidad</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($consumos as $consumo): ?>
             <tr>
-              <td><?= htmlspecialchars($consumo['nombre_producto'] ?? $consumo['nombre']) ?></td>
-              <td><?= htmlspecialchars($consumo['fecha']) ?></td>
-              <td><?= mostrarDecimalLimpio($consumo['cantidad']) ?></td>
+              <td data-label="Producto"><?= htmlspecialchars($consumo['nombre_producto'] ?? $consumo['nombre']) ?></td>
+              <td data-label="Fecha"><?= htmlspecialchars($consumo['fecha']) ?></td>
+              <td data-label="Cantidad"><?= mostrarDecimalLimpio($consumo['cantidad']) ?></td>
+              <td data-label="Eliminar">
+                <form method="POST" action="index.php?seccion=eliminar_consumo"
+                      onsubmit="return confirm('¿Estás seguro de eliminar este consumo? Esta acción no se puede deshacer.');"
+                      style="display:inline;">
+                  <input type="hidden" name="id_consumo" value="<?= $consumo['id'] ?>">
+                  <button type="submit" class="btn-eliminar-p" title="Eliminar Consumo">🗑️</button>
+                </form>
+              </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -52,3 +61,4 @@ function mostrarDecimalLimpio($num) {
     </div>
   <?php endif; ?>
 </div>
+

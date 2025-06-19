@@ -1,5 +1,11 @@
 <div class="agregar-pedido-container">
   <h1 class="ver-pedidos-title">📦 Registrar Llegada de Pedido</h1>
+  <?php if (isset($_GET['exito'])): ?>
+  <div class="alert success">
+    ✅ Pedido recibido y stock actualizado correctamente.
+  </div>
+<?php endif; ?>
+
 
   <form method="POST" action="index.php?seccion=agregar_pedido">
     <label for="id_pedido">Seleccionar pedido pendiente:</label>
