@@ -15,6 +15,7 @@ if (!isset($_SESSION['usuario'])) {
     <title>Stock Chacra</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="./img/chacra.png">
 </head>
 <body>
     <?php require_once __DIR__ . '/views/header.php'; ?>
