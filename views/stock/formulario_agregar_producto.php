@@ -1,5 +1,12 @@
+
+
 <div class="contenedor-agregar-producto">
   <h2 class="form-titulo">➕ Agregar Nuevo Producto</h2>
+      <?php if (isset($_GET['success'])): ?>
+      <div class="alert success">✅ Producto agregado correctamente.</div>
+    <?php elseif (isset($_GET['error'])): ?>
+      <div class="alert error">❌ Error al agregar el producto.</div>
+    <?php endif; ?>
 
   <form method="POST" action="index.php?seccion=guardar_nuevo_producto" class="form-agregar-producto">
     <label class="form-label">Nombre:</label>

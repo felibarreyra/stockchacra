@@ -103,11 +103,14 @@ class StockController {
         $id_area = $_POST['id_area'];
     
         if ($productoModel->agregarProducto($nombre, $unidad, $cantidad, $gasto, $id_area)) {
-            echo "<p style='color:green; text-align:center;'>✅ Producto agregado correctamente.</p>";
+            header("Location: index.php?seccion=formulario_agregar_producto&success=1");
+            exit;
         } else {
-            echo "<p style='color:red; text-align:center;'>❗ Error al agregar el producto.</p>";
+            header("Location: index.php?seccion=formulario_agregar_producto&error=1");
+            exit;
         }
     }
+    
 
     public function formularioAgregarArea() {
         require 'views/stock/formulario_agregar_area.php';
