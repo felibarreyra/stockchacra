@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2025 a las 01:34:08
+-- Tiempo de generación: 19-06-2025 a las 20:17:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -58,6 +58,13 @@ CREATE TABLE `consumos` (
   `cantidad` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `consumos`
+--
+
+INSERT INTO `consumos` (`id`, `id_producto`, `fecha`, `cantidad`) VALUES
+(26, 21, '2025-06-14', 20.00);
+
 -- --------------------------------------------------------
 
 --
@@ -73,6 +80,13 @@ CREATE TABLE `detalle_pedido` (
   `fue_pagado` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `detalle_pedido`
+--
+
+INSERT INTO `detalle_pedido` (`id`, `id_pedido`, `id_producto`, `cantidad_pedida`, `cantidad_recibida`, `fue_pagado`) VALUES
+(52, 37, 21, 12.00, 12.00, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -85,6 +99,13 @@ CREATE TABLE `pedidos` (
   `nro_remito` varchar(50) DEFAULT NULL,
   `estado` enum('Pendiente','Recibido') DEFAULT 'Pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `fecha`, `nro_remito`, `estado`) VALUES
+(37, '2025-06-19', 'REM-20250619-143251', 'Recibido');
 
 -- --------------------------------------------------------
 
@@ -101,6 +122,13 @@ CREATE TABLE `productos` (
   `fecha_ingreso` date NOT NULL DEFAULT current_timestamp(),
   `id_area` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre`, `unidad_medida`, `cantidad_actual`, `gasto_x_sabado`, `fecha_ingreso`, `id_area`) VALUES
+(21, 'HAMBURGUESA', 'CAJA', 42.00, 62.00, '2025-06-19', 2);
 
 -- --------------------------------------------------------
 
@@ -122,7 +150,8 @@ INSERT INTO `usuarios` (`id`, `nombre_usuario`, `contrasena`) VALUES
 (1, 'pedro@lch', '1234'),
 (2, 'benja@lch', '1234'),
 (3, 'chapu@lch', '1234'),
-(4, 'nico@lch', '1234');
+(4, 'nico@lch', '1234'),
+(5, 'mati@lch', '1234');
 
 --
 -- Índices para tablas volcadas
@@ -183,31 +212,31 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT de la tabla `consumos`
 --
 ALTER TABLE `consumos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_pedido`
 --
 ALTER TABLE `detalle_pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
